@@ -21,6 +21,7 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import dumbAttackPack.cards.*;
+import dumbAttackPack.relics.*;
 import dumbAttackPack.characters.TheDefault;
 import dumbAttackPack.events.IdentityCrisisEvent;
 import dumbAttackPack.potions.PlaceholderPotion;
@@ -71,9 +72,9 @@ public class DefaultMod implements
     public static boolean enablePlaceholder = true; // The boolean we'll be setting on/off (true/false)
 
     //This is for the in-game mod settings panel.
-    private static final String MODNAME = "Default Mod";
-    private static final String AUTHOR = "Gremious"; // And pretty soon - You!
-    private static final String DESCRIPTION = "A base for Slay the Spire to start your own mod from, feat. the Default.";
+    private static final String MODNAME = "Dumb Attack Pack";
+    private static final String AUTHOR = "Eric B"; // And pretty soon - You!
+    private static final String DESCRIPTION = "A mod that adds strike scaling cards to the vanilla characters.";
     
     // =============== INPUT TEXTURE LOCATION =================
     
@@ -351,11 +352,13 @@ public class DefaultMod implements
         
         // This adds a relic to the Shared pool. Every character can find this relic.
         BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
-        
+        BaseMod.addRelic(new FryingPan(), RelicType.SHARED);
+
         // Mark relics as seen - makes it visible in the compendium immediately
         // If you don't have this it won't be visible in the compendium until you see them in game
         // (the others are all starters so they're marked as seen in the character file)
         UnlockTracker.markRelicAsSeen(BottledPlaceholderRelic.ID);
+        UnlockTracker.markRelicAsSeen(FryingPan.ID);
         logger.info("Done adding relics!");
     }
     

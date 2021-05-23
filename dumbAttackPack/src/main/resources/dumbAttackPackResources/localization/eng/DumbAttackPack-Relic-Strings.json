@@ -30,5 +30,13 @@
       ".",
       "Select a card to bottle for "
     ]
+  },
+  "dumbAttackPack:FryingPan": {
+    "NAME": "Frying Pan",
+    "FLAVOR": "Aah, you were at my side, all along. My true mentor...",
+    "DESCRIPTIONS": [
+      "All attack cards are now strike cards.",
+      "If a card is already a strike card, it does one more damage"
+    ]
   }
 }
