@@ -26,7 +26,7 @@ public class FryingPan extends CustomRelic {
     public void onEquip() {
         for (AbstractCard c: AbstractDungeon.player.masterDeck.getAttacks().group) {
             if(!c.hasTag(CardTags.STRIKE)) {
-                c.name = c.name + " " + CardLibrary.getCard("Strike_R").name;
+                c.name = c.originalName + " " + CardLibrary.getCard("Strike_R").name;
                 c.tags.add(CardTagEnum.FRYING_STRIKE);
                 c.tags.add(CardTags.STRIKE);
             }
@@ -47,14 +47,14 @@ public class FryingPan extends CustomRelic {
     @Override
     public void onPreviewObtainCard(AbstractCard c) {
         if (c.type.equals(CardType.ATTACK) && !c.hasTag(CardTags.STRIKE)) {
-            c.name = c.name + " " + CardLibrary.getCard("Strike_R").name;
+            c.name = c.originalName + " " + CardLibrary.getCard("Strike_R").name;
         }
     }
 
     @Override
     public void onObtainCard(AbstractCard c) {
         if (c.type.equals(CardType.ATTACK) && !c.hasTag(CardTags.STRIKE)) {
-            c.name = c.name + " " + CardLibrary.getCard("Strike_R").name;
+            c.name = c.originalName + " " + CardLibrary.getCard("Strike_R").name;
             c.tags.add(CardTagEnum.FRYING_STRIKE);
             c.tags.add(CardTags.STRIKE);
         }
