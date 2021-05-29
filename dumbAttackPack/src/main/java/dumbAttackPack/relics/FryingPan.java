@@ -5,17 +5,17 @@ import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
-import dumbAttackPack.DefaultMod;
+import dumbAttackPack.DumbAttackPack;
 import dumbAttackPack.patches.CardTagEnum;
 import dumbAttackPack.util.TextureLoader;
 
 import static com.megacrit.cardcrawl.cards.AbstractCard.*;
-import static dumbAttackPack.DefaultMod.makeRelicOutlinePath;
-import static dumbAttackPack.DefaultMod.makeRelicPath;
+import static dumbAttackPack.DumbAttackPack.makeRelicOutlinePath;
+import static dumbAttackPack.DumbAttackPack.makeRelicPath;
 
 public class FryingPan extends CustomRelic {
 
-    public static final String ID = DefaultMod.makeID("FryingPan");
+    public static final String ID = DumbAttackPack.makeID("FryingPan");
 
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("fryingpan.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("fryingpan.png"));
