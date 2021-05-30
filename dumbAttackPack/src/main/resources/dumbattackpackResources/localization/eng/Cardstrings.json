@@ -44,5 +44,13 @@
   "${ModID}:DrawAndShiv": {
     "NAME": "Draw and Shiv",
     "DESCRIPTION": "Draw 1 card. NL Add 1 *Shiv into your hand."
+  },
+  "${ModID}:RapidStrike": {
+    "NAME": "Rapid Strike",
+    "DESCRIPTION": "Deal !D! damage. Deal !D! damage again for every two of your other cards containing \"Strike\".",
+    "EXTENDED_DESCRIPTION": [
+      " NL (",
+      " additional times)"
+    ]
   }
 }
