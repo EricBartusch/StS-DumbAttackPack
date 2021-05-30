@@ -1,12 +1,10 @@
 {
-  "modid": "${project.artifactId}",
+  "modid": "${ModID}",
   "name": "${project.name}",
   "author_list": ["Eric Bartusch"],
-  "credits": "Basemod, ModTheSpire, #modding",
   "description": "${project.description}",
   "version": "${project.version}",
   "sts_version": "${SlayTheSpire.version}",
   "mts_version": "${ModTheSpire.version}",
-  "dependencies": ["basemod", "stslib"],
-  "update_json": ""
+  "dependencies": ["basemod", "stslib"]
 }
