@@ -7,18 +7,19 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import dumbAttackPack.DumbAttackPack;
 import dumbAttackPack.patches.CardTagEnum;
-import dumbAttackPack.util.TextureLoader;
+import dumbAttackPack.util.TexLoader;
 
 import static com.megacrit.cardcrawl.cards.AbstractCard.*;
-import static dumbAttackPack.DumbAttackPack.makeRelicOutlinePath;
 import static dumbAttackPack.DumbAttackPack.makeRelicPath;
+import static dumbAttackPack.DumbAttackPack.makeRelicOutlinePath;
 
 public class FryingPan extends CustomRelic {
+    public AbstractCard.CardColor color;
 
     public static final String ID = DumbAttackPack.makeID("FryingPan");
 
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("fryingpan.png"));
-    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("fryingpan.png"));
+    private static final Texture IMG = TexLoader.getTexture(makeRelicPath("fryingpan.png"));
+    private static final Texture OUTLINE = TexLoader.getTexture(makeRelicOutlinePath("fryingpan.png"));
 
     public FryingPan() { super(ID, IMG, OUTLINE, RelicTier.SHOP, LandingSound.SOLID); }
 
