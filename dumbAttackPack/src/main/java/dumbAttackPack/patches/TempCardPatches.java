@@ -2,6 +2,8 @@ package dumbAttackPack.patches;
 
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.red.Strike_Red;
+import com.megacrit.cardcrawl.cards.tempCards.Shiv;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
@@ -23,8 +25,8 @@ public class TempCardPatches
     {
         public static void Postfix(AbstractGameEffect __instance, AbstractCard card)
         {
-            if (AbstractDungeon.player.hasRelic(FryingPan.ID) && card.type.equals(CardType.ATTACK) && !card.tags.contains(CardTags.STRIKE)) {
-                card.name = card.name + " " + CardLibrary.getCard("Strike_R").name;
+            if (AbstractDungeon.player.hasRelic(FryingPan.ID) && card.type.equals(CardType.ATTACK) && !card.tags.contains(CardTags.STRIKE) && !card.cardID.equals(Shiv.ID)) {
+                card.name = card.name + " " + CardLibrary.getCard(Strike_Red.ID).name;
                 card.tags.add(CardTags.STRIKE);
                 card.tags.add(CardTagEnum.FRYING_STRIKE);
                 AbstractDungeon.player.getRelic(FryingPan.ID).flash();
