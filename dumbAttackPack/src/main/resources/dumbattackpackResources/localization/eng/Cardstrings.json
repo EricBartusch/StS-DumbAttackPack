@@ -52,5 +52,10 @@
       " NL (",
       " additional times)"
     ]
+  },
+  "${ModID}:OrbStrike": {
+    "NAME": "Orb Strike",
+    "DESCRIPTION": "Deal !D! damage. Deals additional damage for ALL your cards containing \"Strike\" times channeled orbs.",
+    "UPGRADE_DESCRIPTION": "If you have any empty orb slots, channel 1 random orb. NL "
   }
 }

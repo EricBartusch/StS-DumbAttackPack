@@ -22,7 +22,6 @@ public class RapidStrike extends AbstractEasyCard {
         super(ID, 2, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY, CardColor.GREEN);
         baseDamage = 5;
         this.tags.add(CardTags.STRIKE);
-        this.rawDescription = cardStrings.DESCRIPTION;
     }
 
     @Override
@@ -40,11 +39,7 @@ public class RapidStrike extends AbstractEasyCard {
 
     public void applyPowers() {
         super.applyPowers();
-        int strikes = 0;
-        if (AbstractDungeon.player != null)
-        {
-            strikes = countCards() - 1; // don't count the card itself
-        }
+        int strikes = countCards() - 1; // don't count the card itself
         this.rawDescription = cardStrings.DESCRIPTION;
         this.rawDescription = this.rawDescription + cardStrings.EXTENDED_DESCRIPTION[0] + strikes/2 + cardStrings.EXTENDED_DESCRIPTION[1];
 
