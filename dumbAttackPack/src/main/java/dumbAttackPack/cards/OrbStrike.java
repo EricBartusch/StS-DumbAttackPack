@@ -15,7 +15,7 @@ import static dumbAttackPack.DumbAttackPack.makeID;
 public class OrbStrike extends AbstractEasyCard {
 
     /*
-     * (Channel 1 random orb.) Deal 10 damage. Deals additional damage for ALL your cards containing \"Strike\" plus orbs channeled this combat.
+     * (Channel 1 random orb.) Deal 10 damage. Deals 1 additional damage for ALL your cards containing \"Strike\" plus orbs channeled this combat.
      */
 
     public static final String ID = makeID("OrbStrike");
