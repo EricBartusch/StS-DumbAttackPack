@@ -55,7 +55,11 @@
   },
   "${ModID}:OrbStrike": {
     "NAME": "Orb Strike",
-    "DESCRIPTION": "Deal !D! damage. Deals additional damage for ALL your cards containing \"Strike\" plus Orbs channeld this combat.",
-    "UPGRADE_DESCRIPTION": "If you have any empty orb slots, channel 1 random orb. NL "
+    "DESCRIPTION": "Deal !D! damage. Deals additional damage for ALL your cards containing \"Strike\" times unique Orbs channeled this combat.",
+    "UPGRADE_DESCRIPTION": " NL If you have any empty orb slots, channel 1 random orb."
+  },
+  "${ModID}:PatientStrike": {
+    "NAME": "Patient Strike",
+    "DESCRIPTION": "Retain. NL Deal !D! damage to ALL enemies. Deals !M! damage for ALL your cards containing \"Strike\". When Retained, increase additional damage by 1 this combat."
   }
 }

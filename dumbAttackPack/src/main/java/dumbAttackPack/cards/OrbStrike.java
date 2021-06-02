@@ -9,13 +9,16 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+
 import static com.megacrit.cardcrawl.cards.red.PerfectedStrike.*;
 import static dumbAttackPack.DumbAttackPack.makeID;
 
 public class OrbStrike extends AbstractEasyCard {
 
     /*
-     * (Channel 1 random orb.) Deal 10 damage. Deals additional damage for ALL your cards containing \"Strike\" plus orbs channeled this combat.
+     * (Channel 1 random orb.) Deal 10 damage. Deals additional damage for ALL your cards containing \"Strike\" times unique Orbs channeled this combat.
      */
 
     public static final String ID = makeID("OrbStrike");
@@ -28,25 +31,21 @@ public class OrbStrike extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        this.rawDescription = cardStrings.UPGRADE_DESCRIPTION + this.rawDescription;
+        this.rawDescription = this.rawDescription + cardStrings.UPGRADE_DESCRIPTION;
         this.initializeDescription();
     }
 
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
+        this.addToBot(new DamageAction(abstractMonster, new DamageInfo(abstractPlayer, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
         if (upgraded && AbstractDungeon.player.hasEmptyOrb()) {
             this.addToBot(new ChannelAction(AbstractOrb.getRandomOrb(true)));
         }
-        this.addToBot(new DamageAction(abstractMonster, new DamageInfo(abstractPlayer, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-
     }
 
     public void calculateCardDamage(AbstractMonster mo) {
         int realBaseDamage = this.baseDamage;
-        if (upgraded) { //account for orb to be channeled.
-            baseDamage++;
-        }
-        this.baseDamage += AbstractDungeon.actionManager.orbsChanneledThisCombat.size() + countCards();
+        this.baseDamage += uniqueOrbs() * countCards();
         super.calculateCardDamage(mo);
         this.baseDamage = realBaseDamage;
         this.isDamageModified = this.damage != this.baseDamage;
@@ -54,9 +53,18 @@ public class OrbStrike extends AbstractEasyCard {
 
     public void applyPowers() {
         int realBaseDamage = this.baseDamage;
-        this.baseDamage += AbstractDungeon.actionManager.orbsChanneledThisCombat.size() +  countCards();
+        this.baseDamage += uniqueOrbs() * countCards();
         super.applyPowers();
         this.baseDamage = realBaseDamage;
         this.isDamageModified = this.damage != this.baseDamage;
+    }
+
+    private int uniqueOrbs() {
+        ArrayList<AbstractOrb> orbs = AbstractDungeon.actionManager.orbsChanneledThisCombat;
+        HashSet<String> uniqueOrbs = new HashSet();
+        for (int i = 0; i < orbs.size(); i++ ) {
+            uniqueOrbs.add(orbs.get(i).name);
+        }
+        return uniqueOrbs.size();
     }
 }
