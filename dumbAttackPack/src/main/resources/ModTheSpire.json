@@ -1,7 +1,7 @@
 {
   "modid": "${ModID}",
   "name": "${project.name}",
-  "author_list": ["Eric Bartusch"],
+  "author_list": ["EricB"],
   "description": "${project.description}",
   "version": "${project.version}",
   "sts_version": "${SlayTheSpire.version}",
