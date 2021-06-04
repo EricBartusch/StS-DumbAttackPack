@@ -4,27 +4,20 @@ import basemod.AutoAdd;
 import basemod.BaseMod;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
-import com.badlogic.gdx.Gdx;
-import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
-import com.google.gson.Gson;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import dumbAttackPack.cards.AbstractEasyCard;
-import dumbAttackPack.cards.cardvars.SecondDamage;
-import dumbAttackPack.cards.cardvars.SecondMagicNumber;
 import dumbAttackPack.relics.FryingPan;
 
-import java.nio.charset.StandardCharsets;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 @SpireInitializer
 public class DumbAttackPack implements
         EditCardsSubscriber,
         EditRelicsSubscriber,
-        EditStringsSubscriber,
-        EditKeywordsSubscriber{
+        EditStringsSubscriber{
 
     public static final String modID = "dumbattackpack";
 
@@ -77,8 +70,6 @@ public class DumbAttackPack implements
 
     @Override
     public void receiveEditCards() {
-        BaseMod.addDynamicVariable(new SecondMagicNumber());
-        BaseMod.addDynamicVariable(new SecondDamage());
         new AutoAdd(modID)
                 .packageFilter(AbstractEasyCard.class)
                 .setDefaultSeen(true)
@@ -89,20 +80,6 @@ public class DumbAttackPack implements
     @Override
     public void receiveEditStrings() {
         BaseMod.loadCustomStringsFile(CardStrings.class, modID + "Resources/localization/eng/Cardstrings.json");
-
         BaseMod.loadCustomStringsFile(RelicStrings.class, modID + "Resources/localization/eng/Relicstrings.json");
-    }
-
-    @Override
-    public void receiveEditKeywords() {
-        Gson gson = new Gson();
-        String json = Gdx.files.internal(modID + "Resources/localization/eng/Keywordstrings.json").readString(String.valueOf(StandardCharsets.UTF_8));
-        com.evacipated.cardcrawl.mod.stslib.Keyword[] keywords = gson.fromJson(json, com.evacipated.cardcrawl.mod.stslib.Keyword[].class);
-
-        if (keywords != null) {
-            for (Keyword keyword : keywords) {
-                BaseMod.addKeyword(modID, keyword.PROPER_NAME, keyword.NAMES, keyword.DESCRIPTION);
-            }
-        }
     }
 }
