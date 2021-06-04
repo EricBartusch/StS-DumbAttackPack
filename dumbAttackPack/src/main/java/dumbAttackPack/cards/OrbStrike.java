@@ -18,7 +18,7 @@ import static dumbAttackPack.DumbAttackPack.makeID;
 public class OrbStrike extends AbstractEasyCard {
 
     /*
-     * Deal 10 damage. Deals additional damage for ALL your cards containing \"Strike\" times unique Orbs channeled this combat. (If you have any empty orb slots, channel 1 random orb.) 
+     * Deal 10 damage. Deals additional damage for ALL your cards containing \"Strike\" times unique Orbs channeled. (If you have any empty orb slots, channel 1 random orb.)
      */
 
     public static final String ID = makeID("OrbStrike");
@@ -60,10 +60,12 @@ public class OrbStrike extends AbstractEasyCard {
     }
 
     private int uniqueOrbs() {
-        ArrayList<AbstractOrb> orbs = AbstractDungeon.actionManager.orbsChanneledThisCombat;
+        ArrayList<AbstractOrb> orbs = AbstractDungeon.player.orbs;
         HashSet<String> uniqueOrbs = new HashSet();
         for (int i = 0; i < orbs.size(); i++ ) {
-            uniqueOrbs.add(orbs.get(i).name);
+            if(orbs.get(i).ID != null) { //skip empty orbs
+                uniqueOrbs.add(orbs.get(i).ID);
+            }
         }
         return uniqueOrbs.size();
     }
