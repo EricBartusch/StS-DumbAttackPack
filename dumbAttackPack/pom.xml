@@ -4,7 +4,7 @@
     <groupId>dumbattackpack</groupId>
 
     <artifactId>DumbAttackPack</artifactId>
-    <version>2.0.0</version>
+    <version>2.0.2</version>
     <name>Dumb Attack Pack</name>
     <description>A strike based relic and some new strike scaling cards for the non-Ironclad characters.</description>
     <!-- Change the above for mod information. -->
