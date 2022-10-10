@@ -8,7 +8,7 @@
     ]
   },
   "${ModID}:OrbStrike": {
-    "NAME": "Orb Strike",
+    "NAME": "Defected Strike",
     "DESCRIPTION": "Deal !D! damage. Deals additional damage for ALL your cards containing \"Strike\" times unique Orbs channeled.",
     "UPGRADE_DESCRIPTION": " NL If you have any empty orb slots, channel 1 random orb."
   },
